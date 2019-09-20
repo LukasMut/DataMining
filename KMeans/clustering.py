@@ -73,7 +73,7 @@ class KMeans:
         """
         return (np.mean(data[data[:, 2] == i][:, :2], axis=0) for i in range(k))
     
-    def fit(self, data, epochs):
+    def fit_predict(self, data, epochs):
         """
             Args: dataset and number of epochs to train
             Return: dataset and optimized mean values for each of the two classes
