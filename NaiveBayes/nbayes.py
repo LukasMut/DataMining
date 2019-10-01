@@ -26,16 +26,24 @@ def train(data):
 	example_count = 0 # Count of how many examples that you have gone through.
 
 	for example in data:
+        
+        #NOTE: X, y = X is the motivation (i.e., dependent feature), y is the study programme (i.e., independentclass)
+        
 		X, y = example # X is the name, y is the gender.
+        
+        #NOTE: feature_extraction = number of words used for describing motivation
+        
 		f_x = feature_extraction(X) # get the last letter
 		
 		#print(X,f_x,y) #
 		#print(model)   # Uncomment these to see whats inside.
 		#print()        #
-
-		if y not in model: # If the gender is not in the model
+        
+        #NOTE: if the study programme is not in the model
+		if y not in model: # If the gender is not in the model 
 			model[y] = {}  # Sub dictionary
-
+        
+        #NOTE: if n_words_used is not in the model given the study programme
 		if f_x not in model[y]: # If that last letter was not in the model given that gender.
 			model[y][f_x] = 0   # Initialize as 0
 

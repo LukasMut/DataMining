@@ -5,3 +5,12 @@ KMeans/data/geyserData.csv
 Book/DataMining - Concepts-and-Techniques.pdf
 Individual_Assignment_DataMining_Description.pdf
 KMeans/.ipynb_checkpoints/Data Mining - KMeans & KMedoids-checkpoint.ipynb
+Assignment/.ipynb_checkpoints/Assignment_DataMining-checkpoint.ipynb
+Assignment/__pycache__/classification.cpython-37.pyc
+Assignment/__pycache__/clustering.cpython-37.pyc
+Assignment/__pycache__/utils.cpython-37.pyc
+*.pdf
+*.csv
+*.png
+*.jpg
+HierarchicalClustering/student_version/.ipynb_checkpoints/hierarchical_clustering-checkpoint.ipynb
