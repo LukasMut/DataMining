@@ -5,6 +5,10 @@ import re
 from collections import defaultdict
 from utils import *
 
+def accuracy_score(y_true:np.ndarray, y_hat:np.ndarray):
+    array_comparison = y_true == y_hat
+    return len(array_comparison[array_comparison == True]) / len(array_comparison)
+
 def str_to_num(classes:np.ndarray):
     # we might want to convert strings to numerical labels (not necessarily for this particular task, but perhaps for another task)
     str_to_num = {label:idx for idx, label in enumerate(classes)}
@@ -88,7 +92,15 @@ class NaiveBayes:
             Args: nested dict with attributes per class, number of words in test sentence (i.e., f_x)
             Return: closest class according to distribution of number of words used in train sentences (minimized distance)
         """
-        mean_wordlen_per_class = {label: np.mean(list(distribution.keys())) for label, distribution in attr_per_class.items()}
+        mean_wordlen_per_class = {}
+        for label, distribution in attr_per_class.items():
+            labels_per_class = []
+            for n_words, freq in distribution.items():
+                if n_words != 'n_total':
+                    for _ in range(freq):
+                        labels_per_class.append(n_words)
+            # compute weighted average (more weight is assigned to n_words that appeared more frequently in train set)
+            mean_wordlen_per_class[label] = np.mean(labels_per_class)
         distances = [abs(f_x - mean_wordlen) for mean_wordlen in mean_wordlen_per_class.values()]
         min_dist = np.argmin(distances)
         return list(mean_wordlen_per_class.keys())[min_dist]
